@@ -1,0 +1,42 @@
+<?php
+add_filter( 'facetwp_index_row', function( $params, $class ) {
+if ( 'keyword_sort' == $params['facet_name'] ) {
+ $topic = get_term( $params['term_id'], 'mailing_topic' );
+        if ( !is_wp_error( $topic ) ) {
+            $topic_name = $topic->name;
+            $params['facet_display_value'] = sanitize_text_field( $topic_name );
+        }
+    }
+    return $params;
+}, 200, 2 );
+} 
+elseif ( 'restaurant_location' == $params['facet_name'] ) {
+ $location = get_term( $params['term_id'], 'restaurant_city' );
+        if ( !is_wp_error( $location ) ) {
+            $location_name = $location->name;
+            $params['facet_display_value'] = sanitize_text_field( $location_name );
+        }
+    }
+    return $params;
+}, 200, 2 );
+}
+elseif ( 'food_categories' == $params['facet_name'] ) {
+ $food = get_term( $params['term_id'], 'food_category' );
+        if ( !is_wp_error( $food ) ) {
+            $food_name = $food->name;
+            $params['facet_display_value'] = sanitize_text_field( $food_name );
+        }
+    }
+    return $params;
+}, 200, 2 );
+}
+elseif ( 'carrier' == $params['facet_name'] ) {
+ $carrier = get_term( $params['term_id'], 'carrier_mc' );
+        if ( !is_wp_error( $carrier ) ) {
+            $carrier_name = $carrier->name;
+            $params['facet_display_value'] = sanitize_text_field( $carrier_name );
+        }
+    }
+    return $params;
+}, 200, 2 );
+}
