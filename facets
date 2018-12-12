@@ -6,10 +6,7 @@ if ( 'keyword_sort' == $params['facet_name'] ) {
             $topic_name = $topic->name;
             $params['facet_display_value'] = sanitize_text_field( $topic_name );
         }
-    }
-    return $params;
-}, 200, 2 );
-} 
+    } 
 elseif ( 'restaurant_location' == $params['facet_name'] ) {
  $location = get_term( $params['term_id'], 'restaurant_city' );
         if ( !is_wp_error( $location ) ) {
@@ -17,9 +14,7 @@ elseif ( 'restaurant_location' == $params['facet_name'] ) {
             $params['facet_display_value'] = sanitize_text_field( $location_name );
         }
     }
-    return $params;
-}, 200, 2 );
-}
+    
 elseif ( 'food_categories' == $params['facet_name'] ) {
  $food = get_term( $params['term_id'], 'food_category' );
         if ( !is_wp_error( $food ) ) {
@@ -27,9 +22,7 @@ elseif ( 'food_categories' == $params['facet_name'] ) {
             $params['facet_display_value'] = sanitize_text_field( $food_name );
         }
     }
-    return $params;
-}, 200, 2 );
-}
+    
 elseif ( 'carrier' == $params['facet_name'] ) {
  $carrier = get_term( $params['term_id'], 'carrier_mc' );
         if ( !is_wp_error( $carrier ) ) {
@@ -39,4 +32,3 @@ elseif ( 'carrier' == $params['facet_name'] ) {
     }
     return $params;
 }, 200, 2 );
-}
